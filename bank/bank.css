@@ -1,0 +1,167 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f8f7f7;
+    
+    
+}
+
+header{
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    margin: 0;
+    padding: 2vh;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 10px 0 #aaa;
+}
+
+
+h1{
+    text-align: center;
+    color: beige;
+    text-shadow: 0 0 10px #000;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px;
+    max-width: 100vw;
+}
+
+h2{
+    text-align: center;
+}
+
+#accounts{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0 0 20px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.account{
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px 0 #aaa;
+    cursor: pointer;
+}
+
+.account-balance{
+    font-size: 35px;
+}
+
+#accountTransactionsSection{
+    display: none;
+}
+
+#accountTransactionsSection:has(.transaction){
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0 0 20px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: all 0.5s ease-in-out;
+}
+
+
+/* #accountTransactionsSection:not(:has(.transaction)){
+    display: none;
+} */
+
+#accountTransactions{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: calc(fit-content + 40px);
+}
+
+.transaction{
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 100%;
+    height: fit-content;
+    position: relative;
+    padding: 15%;
+    font-size: 100;
+}
+
+.Withdraw{
+    background-color: red;
+}
+
+.Deposit{
+    background-color: green;
+}
+
+.WithdrawCard{
+    box-shadow: 0 3px 10px 0 red;
+    border-radius: 5px;
+}
+
+.DepositCard{
+    box-shadow: 0 3px 10px 0 green ;
+    border-radius: 5px;
+}
+
+.DepositCard .transaction-to, .WithdrawCard .transaction-from{
+    font-weight: bold;
+}
+
+.transaction-amount{
+    font-size: 25px;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.transaction-date{
+    font-size: 15px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+@media only screen and (max-width: 600px){
+    main{
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    #accounts{
+        min-width: 85vw;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .account{
+        width: 100%;
+    }
+
+    #accountTransactionsSection:has(.transaction){
+        flex-direction: column;
+        align-items: center;
+        min-width: 100%;
+    }
+
+    #accountTransactions{
+        width: 100%;
+    }
+}
