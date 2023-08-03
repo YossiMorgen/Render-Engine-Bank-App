@@ -11,7 +11,6 @@ class Account{
     accountID;
     Owner;
     Balance;
-    Transactions;
 }
 
 class Transaction{

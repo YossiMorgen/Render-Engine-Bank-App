@@ -92,6 +92,8 @@ h2{
     flex-wrap: wrap;
     flex-direction: column;
     width: calc(fit-content + 40px);
+    padding: 0 20px;
+    border-left: solid 2px #aaa;
 }
 
 .transaction{
@@ -163,5 +165,6 @@ h2{
 
     #accountTransactions{
         width: 100%;
+        border: none;
     }
 }
