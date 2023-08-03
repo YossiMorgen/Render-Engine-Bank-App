@@ -79,11 +79,6 @@ h2{
     transition: all 0.5s ease-in-out;
 }
 
-
-/* #accountTransactionsSection:not(:has(.transaction)){
-    display: none;
-} */
-
 #accountTransactions{
     width: 200px;
     display: flex;

@@ -2,9 +2,7 @@ function render(template, data){
     let html = '';
     const regex = /\[(.*?)\]/g;
     const matches = template.match(regex);
-
-    console.log(matches);
-
+    
     data.forEach(item =>{
         let temp = template;
         matches.forEach(match => {

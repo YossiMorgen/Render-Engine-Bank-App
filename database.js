@@ -1,4 +1,4 @@
-const DATA_BASE_SIZE = 12;
+const DATA_BASE_SIZE = 30;
 
 class Client{
     firstName;
@@ -57,7 +57,7 @@ let Bank = {
         },
 
         GetBalance: function(id){
-            let transactions = Bank.GetTransactionByAccount(id);
+            let transactions = Bank.Transactions.filter(transaction => transaction.FromID == id || transaction.ToID == id);
             let balance = 0;
             for(let transaction of transactions){
                 if(transaction.FromID == id){
@@ -66,6 +66,7 @@ let Bank = {
                     balance += transaction.Amount;
                 }
             }
+            console.log(balance);
             return balance;
         },
 
@@ -83,8 +84,8 @@ let Bank = {
 (function(){
     for(let i = 0; i < DATA_BASE_SIZE; i++){
         let client = new Client();
-        client.firstName = `Client ${i}`;
-        client.lastName = `Client ${i}`;
+        client.firstName = `firstname ${i}`;
+        client.lastName = `lastname ${i}`;
         client.clientID = i;
         Bank.Clients.push(client);
     }
@@ -93,7 +94,6 @@ let Bank = {
         let account = new Account();
         account.accountID = i;
         account.clientID = Bank.Clients[i].clientID;
-        account.Balance = Math.floor(Math.random() * 1000, 2);
         Bank.Accounts.push(account);
     }
 
@@ -104,9 +104,13 @@ let Bank = {
         transaction.transactionID = i;
         transaction.FromID = i;
         transaction.ToID = Math.floor(Math.random() * Bank.Clients.length);
-        transaction.Amount = Math.floor(Math.random() * 1000, 2);
+        transaction.Amount = Math.floor(Math.random() * (1000 - 1) + 1, 2);
         transaction.Date = new Date().toISOString().slice(0, 10);
         if(transaction.Type == "Withdraw") transaction.Amount *= -1;
         Bank.Transactions.push(transaction);
     }
+
+    Bank.Accounts.map(account => {
+        account.Balance = Bank.API.GetBalance(account.accountID);
+    })
 })();
